@@ -44,17 +44,10 @@
      Add the following to /database/*_create_tasks_table.php file
 
         <?php
-
         use Illuminate\Database\Schema\Blueprint;
         use Illuminate\Database\Migrations\Migration;
-
         class CreateTasksTable extends Migration
         {
-            /**
-             * Run the migrations.
-             *
-             * @return void
-             */
             public function up()
             {
                 Schema::create('tasks', function (Blueprint $table) {
@@ -63,14 +56,75 @@
                     $table->timestamps();
                 });
             }
-
-            /**
-             * Reverse the migrations.
-             *
-             * @return void
-             */
             public function down()
             {
                 Schema::drop('tasks');
             }
         }
+
+     Edit the database.config file and then from your project directory run a migration
+     
+        php artisan migrate
+        
+ -  Create a model
+ 
+        php artisan make:model Task
+        
+-   Create a route
+
+        <?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
+
+use App\Task;
+use Illuminate\Http\Request;
+
+Route::group(['middleware' => ['web']], function () {
+    /**
+     * Show Task Dashboard
+     */
+    Route::get('/', function () {
+        return view('tasks', [
+            'tasks' => Task::orderBy('created_at', 'asc')->get()
+        ]);
+    });
+
+    /**
+     * Add New Task
+     */
+    Route::post('/task', function (Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $task = new Task;
+        $task->name = $request->name;
+        $task->save();
+
+        return redirect('/');
+    });
+
+    /**
+     * Delete Task
+     */
+    Route::delete('/task/{id}', function ($id) {
+        Task::findOrFail($id)->delete();
+
+        return redirect('/');
+    });
+});
