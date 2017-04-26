@@ -249,3 +249,18 @@
                   </div>
               </div>
           @endsection
+
+-   Add tasks
+
+    
+    //Actually fill out the route
+    
+-   Delete tasks
+
+    Add to routes.php
+    
+        Route::delete('/task/{id}', function ($id) {
+        Task::findOrFail($id)->delete();
+
+        return redirect('/');
+        });
