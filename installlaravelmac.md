@@ -29,7 +29,7 @@
         sudo echo "extension= pdo_sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
         sudo echo "extension= sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
 
--    Install Composer and setup your first Laravel Project
+-   Install Composer and setup your first Laravel Project
 
         curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
         sudo composer create-project laravel/laravel todoapp
