@@ -343,4 +343,17 @@
      
      ![alt text](https://preview.ibb.co/e98qi5/laravelcomplete.png "Logo Title Text 1")
 
+-   Add a few tasks using the UI and verify the results using sqlcmd 
+
+        sqlcmd -S yourserver -d yourdatabase -p yourpassword -U yourusername        
+        1> select * FROM  dbo.tASKS
+        2> GO
+         id          name           created _at                updated_at
+         -----------------------------------------------------------------------------
+         1           Meet's task    2017-05-02 05:51:25.000    2017-05-02 05:51:25.000                                         
+         
+        (1 rows affected)
+
+
+
 
