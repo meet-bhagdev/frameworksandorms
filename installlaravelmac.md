@@ -88,7 +88,7 @@
 
         php artisan make:migration create_tasks_table --create=tasks
         
-     Add the following to /database/*_create_tasks_table.php file
+     Add the following to /database/migrations/*_create_tasks_table.php file
 
         <?php
         use Illuminate\Database\Schema\Blueprint;
