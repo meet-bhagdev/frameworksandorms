@@ -52,8 +52,6 @@
         DB_USERNAME=yourusername
         DB_PASSWORD=yourpassword
 
-
-
 -   Edit the config/database.php file with your database settings
     
         cd config
@@ -336,3 +334,26 @@
                 </ul>
             </div>
         @endif
+        
+-   Serve the app
+
+        php artisan serve
+     
+     Go to http://127.0.0.1:8000 from the browser of your choice. You should see the following
+     
+     ![alt text](https://preview.ibb.co/e98qi5/laravelcomplete.png "Logo Title Text 1")
+
+-   Add a few tasks using the UI and verify the results using sqlcmd 
+
+        sqlcmd -S yourserver -d yourdatabase -p yourpassword -U yourusername        
+        1> select * FROM  dbo.tASKS
+        2> GO
+         id          name           created _at                updated_at
+         -----------------------------------------------------------------------------
+         1           Meet's task    2017-05-02 05:51:25.000    2017-05-02 05:51:25.000                                         
+         
+        (1 rows affected)
+
+
+
+
