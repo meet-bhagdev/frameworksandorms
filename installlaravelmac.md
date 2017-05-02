@@ -33,8 +33,8 @@
 
         curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
         sudo composer create-project laravel/laravel quickstart --prefer-dist
-        sudo chmod -R 777 todoapp
-        cd todoapp
+        sudo chmod -R 777 quickstart
+        cd quickstart
         php artisan serve --port=8080
         
 -   Prepping The Database
