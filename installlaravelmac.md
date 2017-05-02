@@ -39,7 +39,7 @@
         
 -   Prepping The Database
 
-     Edit the .env file with the following:
+     Edit the .env file with your database credentials
      
         vim .env
 
@@ -52,7 +52,7 @@
 
 
 
--   Edit the config/database.php file
+-   Edit the config/database.php file with your database settings
     
         cd config
         vim database.php
@@ -84,11 +84,13 @@
         
         .............
         
--   Edit the .env file
+-   Create a migration
 
         php artisan make:migration create_tasks_table --create=tasks
         
-     Add the following to /database/migrations/*_create_tasks_table.php file
+     Add the following to database/migrations/*_create_tasks_table.php file
+      
+        vim database/migrations/2017_05_02_052414_create_tasks_table.php
 
         <?php
         use Illuminate\Database\Schema\Blueprint;
@@ -109,7 +111,7 @@
             }
         }
 
-     Edit the database.config file and then from your project directory run a migration
+     Run a migration to create the necessary tables in your database
      
         php artisan migrate
         
@@ -117,11 +119,11 @@
  
         php artisan make:model Task
         
--   Create a route
+-   Create your routes
  
         vim routes/web.php
       
-     Paste the following in web.php
+     Paste the following in web.php. This creates the routes for add task, view task and delete task
 
         <?php
         use App\Task;
@@ -167,8 +169,13 @@
         });
         ?>
         
--   Building Layouts & Views
-    Paste the following in /resources/views/layouts/app.blade.php
+-   Create views for the routes we created
+    Paste the following in resources/views/layouts/app.blade.php. This creates the base layout for your Laravel app 
+    
+        cd resources/views
+        mkdir layouts
+        vim app.blade.php
+        
     
         <!DOCTYPE html>
         <html lang="en">
@@ -220,7 +227,10 @@
         </body>
         </html>
         
- -    Paste the following in /resources/views/tasks.blade.php
+ -    Paste the following in resources/views/tasks.blade.php. This creates the layout for your tasks page where you can add, view and delete your tasks
+  
+          cd resources/views
+          vim tasks.blade.php
  
           @extends('layouts.app')
           
@@ -301,10 +311,6 @@
               </div>
           @endsection
 
--   Add tasks
-
-    
-    //Actually fill out the route
     
 -   Delete tasks
 
