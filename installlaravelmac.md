@@ -39,7 +39,18 @@
         
 -   Prepping The Database
 
-        //code 
+     Edit the .env file with the following:
+     
+        vim .env
+
+        DB_CONNECTION=sqlsrv
+        DB_HOST=yourservername
+        DB_PORT=1433
+        DB_DATABASE=yourdatabasename
+        DB_USERNAME=yourusername
+        DB_PASSWORD=yourpassword
+
+
 
 -   Edit the config/database.php file
     
