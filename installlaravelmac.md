@@ -54,7 +54,35 @@
 
 -   Edit the config/database.php file
     
-        //code 
+        cd config
+        vim database.php
+        
+      Paste the following below mysql section
+      
+        ............
+      
+        'pgsql' => [
+                'driver'   => 'pgsql',
+                'host'     => env('DB_HOST', 'localhost'),
+                'database' => env('DB_DATABASE', 'forge'),
+                'username' => env('DB_USERNAME', 'forge'),
+                'password' => env('DB_PASSWORD', ''),
+                'charset'  => 'utf8',
+                'prefix'   => '',
+                'schema'   => 'public',
+         ],
+        
+        
+        'sqlsrv' => [
+                'driver'   => 'sqlsrv',
+                'host'     => 'localhost',
+                'database' => env('DB_DATABASE', 'yourdatabase'),
+                'username' => env('DB_USERNAME', 'sa'),
+                'password' => env('DB_PASSWORD', 'yourpassword'),
+                'prefix'   => '',
+        ],
+        
+        .............
         
 -   Edit the .env file
 
