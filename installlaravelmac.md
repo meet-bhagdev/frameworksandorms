@@ -334,3 +334,13 @@
                 </ul>
             </div>
         @endif
+        
+-   Serve the app
+
+        php artisan serve
+     
+     Go to http://127.0.0.1:8000 from the browser of your choice. You should see the following
+     
+     ![alt text](https://preview.ibb.co/e98qi5/laravelcomplete.png "Logo Title Text 1")
+
+
