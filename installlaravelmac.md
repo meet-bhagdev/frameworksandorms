@@ -118,6 +118,10 @@
         php artisan make:model Task
         
 -   Create a route
+ 
+        vim routes/web.php
+      
+     Paste the following in web.php
 
         <?php
         use App\Task;
