@@ -170,7 +170,8 @@
         ?>
         
 -   Create views for the routes we created
-    Paste the following in resources/views/layouts/app.blade.php. This creates the base layout for your Laravel app 
+
+     Paste the following in resources/views/layouts/app.blade.php. This creates the base layout for your Laravel app 
     
         cd resources/views
         mkdir layouts
@@ -227,7 +228,7 @@
         </body>
         </html>
         
- -    Paste the following in resources/views/tasks.blade.php. This creates the layout for your tasks page where you can add, view and delete your tasks
+       Paste the following in resources/views/tasks.blade.php. This creates the layout for your tasks page where you can add, view and delete your tasks
   
           cd resources/views
           vim tasks.blade.php
@@ -312,12 +313,24 @@
           @endsection
 
     
--   Delete tasks
+     Paste the following in resources/views/common/errors.blade.php. This creates the layout error conditions
+     
+        cd resources/views
+        
+        mkdir common
+        vim errors.blade.php
+        
+        @if (count($errors) > 0)
+            <!-- Form Error List -->
+            <div class="alert alert-danger">
+                <strong>Whoops! Something went wrong!</strong>
 
-    Add to routes.php
-    
-        Route::delete('/task/{id}', function ($id) {
-        Task::findOrFail($id)->delete();
+                <br><br>
 
-        return redirect('/');
-        });
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
