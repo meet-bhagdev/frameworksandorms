@@ -1,12 +1,7 @@
 -   Install SQL Server
 
-        sudo su
-        curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-        curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list > /etc/apt/sources.list.d/mssql-server.list
-        exit
-        sudo apt-get update
-        sudo apt-get install mssql-server
-        sudo /opt/mssql/bin/mssql-conf setup
+        docker pull microsoft/mssql-server-linux
+        docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 -d microsoft/mssql-server-linux
     
 -   Install Python and Django
     
