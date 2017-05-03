@@ -21,12 +21,18 @@
 -   Setup your first Django project
 
         django-admin startproject todo
+        
+     Verify that you are able to serve your application
+
         python manage.py runserver
+     
+     Create a new Django app for the todo application
+     
         python manage.py startapp todoapp
         
 -   Edit the todo/settings.py file with your database settings
     
-        vim settings.py
+        vim todo/settings.py
         
       Replace the DATABASE section with the following
       
@@ -51,6 +57,11 @@
         
 -   Run migrations
 
+        python manage.py migrate
+        
+-   Create a new migration
+
+		python manage.py makemigrations todoapp
         python manage.py migrate
         
 -   Create a model
@@ -82,8 +93,8 @@
         from django.contrib import admin
 
         urlpatterns = [
-            #url(r'^$', include('todos.urls')),
-            url(r'^todos/', include('todos.urls')),
+            #url(r'^$', include('todoapp.urls')),
+            url(r'^todo/', include('todoapp.urls')),
             url(r'^admin/', admin.site.urls),
         ]
         
@@ -100,7 +111,20 @@
             url(r'^details/(?P<id>\w{0,50})/$', views.details),
             url(r'^add', views.add, name='add')
         ]
+-   Create temporary views for your page
 
+    	vim todoapp/views.py
+	
+    
+    	from django.shortcuts import render, redirect
+    	from django.http import HttpResponse
+
+		def index(request):
+			return HttpResponse('Hello World')
+
+		def details(request):
+			return HttpResponse('Details Page')
+                                            
 -   Create super user for the Django app
 
         python manage.py createsuperuser --username=yourusername --email=youremail
@@ -117,8 +141,9 @@
         
 -   Create templates for your Django application
 
-        cd todoapp/templates
-        vim  index.html
+        cd todoapp
+        mkdir templates
+        vim  templates/index.html
         
      Paste the following in index.html
         
@@ -130,8 +155,7 @@
             </ul>
         {% include 'partials/footer.html' %}
         
-        cd todoapp/templates
-        vim  details.html
+        vim  todoapp/templates/details.html
         
      Paste the following in details.html
 
@@ -146,6 +170,7 @@
   
         cd todoapp/templates  
         mkdir partials
+        cd partials
         vim header.html
         
      Paste the following in header.html
@@ -179,8 +204,7 @@
 
 -   Create views 
 
-        cd todoapp
-        vim views.py
+        vim todoapp/views.py
         
      Paste the following in views.py
 
@@ -235,6 +259,7 @@
          1           Meet's task    2017-05-02 05:51:25.000    2017-05-02 05:51:25.000                                         
          
         (1 rows affected)
+
 
 
 
