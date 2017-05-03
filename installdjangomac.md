@@ -55,7 +55,7 @@
         
 -   Create a model
 
-        vim todo/models.py
+        vim todoapp/models.py
         
      Paste the following in the models.py file. This creates a class for our todo's
      
@@ -235,6 +235,7 @@
          1           Meet's task    2017-05-02 05:51:25.000    2017-05-02 05:51:25.000                                         
          
         (1 rows affected)
+
 
 
 
